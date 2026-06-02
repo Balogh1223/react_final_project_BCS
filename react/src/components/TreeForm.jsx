@@ -4,9 +4,11 @@ import Swal from "sweetalert2"
 
 const TreeForm = ({ sendDataToApp }) => {
 
-    const [fatipusState,setFatipus] = useState();
-    const darabszamRef = uesRef();
-    const megjegyzesRef = useRef(); 
+    const nameRef = useRef();
+    const img_urlRef = useRef();
+    const priceRef = useRef();
+    const stockRef = uesRef();
+    const describtionRef = useRef(); 
 
     const handleSubmit = (event) =>{
         event.preventDefault();
@@ -15,11 +17,13 @@ const TreeForm = ({ sendDataToApp }) => {
     
 
     const summarizeTreeData = () => {
-        const fatipus = fatipusState
-        const darabszam = darabszamRef.current.value
-        const megjegyzes = megjegyzesRef.current.value
+        const name = nameRef.current.value;
+        const img_url = img_urlRef.current.value;
+        const price = priceRef.current.value;
+        const stock = stockRef.current.value;
+        const describtion = describtionRef.current.value;
 
-        if(!fatipus || !darabszam || !megjegyzes){
+        if(!name || !stock || !describtion){
             Swal.fire({
                 icon: "error",
                 title: "Hiba",
@@ -27,27 +31,62 @@ const TreeForm = ({ sendDataToApp }) => {
             })
             return;
         }
+
+        const saveTreeDataToDatabase = async () => {
+            try {
+                const response = await fetch("http://localhost:3000/products", { 
+
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "authorization": localStorage.getItem("token"),
+                    },
+                    body: JSON.stringify({
+                        name,
+                        img_url,
+                        price,
+                        stock,
+                        description,
+                    }),
+                });
+                if (response.ok) {
+                const data = await response.json();
+                sendDataToApp(data);
+                } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Hiba",
+                    text: "A fa mentése sikertelen!",
+                });
+                }
+            } catch (error) {
+                console.error("Hiba:", error);
+            }
+        };
+
+        saveTreeDataToDatabase();
     }
 
 
     return (
         <Card>
             <div>
-                <h2>Farendeles</h2>
+                <h2>Új facsemete felvitele</h2>
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="fatpus">Választható fatípus:</label>
-                    <select name="" id="fatipus" onChange={(e) => setFatipus(e.target.value)}>
-                        <option value="Barack csemete">Barackfa csemete</option>
-                        <option value="Cseresznyefa csemete">Cseresznyefa csemete</option>
-                        <option value="Gesztenyefa csemete">Gesztenyefa csemete</option>
-                        <option value="Almafa csemete">Almafa csemete</option>
-                    </select>
+                    <label htmlFor="name">Név:</label>
+                    <input type="text" id="name" ref={nameRef}/>
 
-                    <label htmlFor="darabszam">Hány darab facsemetét vásárol</label>
-                    <input type="number" id="darabszam" ref={darabszamRef}/>
+                    <label htmlFor="img_url">Kép URL:</label>
+                    <input type="text" id="img_url" ref={img_urlRef}/>
 
-                    <label htmlFor="megjegyzes">Megjegyzések:</label>
-                    <input type="text" name="" id="megjegyzes" ref={megjegyzesRef}/>
+                    <label htmlFor="price">Ár:</label>
+                    <input type="number" id="price" ref={priceRef}/>
+
+                    <label htmlFor="stock">Darabszám:</label>
+                    <input type="number" id="stock" ref={stockRef}/>
+
+                    <label htmlFor="describtion">Leírás:</label>
+                    <input type="text" id="describtion" ref={describtionRef}/>
 
                     <button type="submit">
                         Küldés
