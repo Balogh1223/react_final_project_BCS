@@ -7,7 +7,7 @@ const TreeForm = ({ sendDataToApp }) => {
     const nameRef = useRef();
     const img_urlRef = useRef();
     const priceRef = useRef();
-    const stockRef = uesRef();
+    const stockRef = useRef();
     const describtionRef = useRef(); 
 
     const handleSubmit = (event) =>{
@@ -74,19 +74,19 @@ const TreeForm = ({ sendDataToApp }) => {
                 <h2>Új facsemete felvitele</h2>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="name">Név:</label>
-                    <input type="text" id="name" ref={nameRef}/>
+                    <input type="text" id="name" ref={nameRef}/><br />
 
                     <label htmlFor="img_url">Kép URL:</label>
-                    <input type="text" id="img_url" ref={img_urlRef}/>
+                    <input type="text" id="img_url" ref={img_urlRef}/><br />
 
                     <label htmlFor="price">Ár:</label>
-                    <input type="number" id="price" ref={priceRef}/>
+                    <input type="number" id="price" ref={priceRef}/><br />
 
                     <label htmlFor="stock">Darabszám:</label>
-                    <input type="number" id="stock" ref={stockRef}/>
+                    <input type="number" id="stock" ref={stockRef}/><br />
 
                     <label htmlFor="describtion">Leírás:</label>
-                    <input type="text" id="describtion" ref={describtionRef}/>
+                    <input type="text" id="describtion" ref={describtionRef}/><br />
 
                     <button type="submit">
                         Küldés

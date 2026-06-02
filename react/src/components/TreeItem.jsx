@@ -5,7 +5,14 @@ const TreeItem = ({tree}) => {
 
     return(
         <>
-        
+        <Card>
+            <div>
+                <h3>{tree.name}</h3>
+                <img src={tree.img_url} alt={tree.name} title={tree.name}/>
+                    
+                <button>Részletek</button>
+            </div>
+        </Card>
         </>
     )
 }
