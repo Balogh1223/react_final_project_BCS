@@ -9,3 +9,4 @@ const TreeList = ({ trees }) => {
         </div>
     )
 }
+export default TreeList;
