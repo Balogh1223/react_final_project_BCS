@@ -1,8 +1,39 @@
 import Swal from "sweetalert2";
 import Card from "../wrappers/Card";
+import { NavLink } from "react-router-dom";
+import { useAuth } from "../context/loginContext";
+
 
 const TreeItem = ({tree}) => {
 
+    const {isLogged} = useAuth()
+    console.log(tree.id)
+    const handleDelete = async (id) => {
+        const confirmDelete = window.confirm("Biztosan törölni szeretnéd ezt az facsemetét?");
+        if (confirmDelete) {
+        const response = await fetch(`http://localhost:3000/products/${id}`, {
+            method: "DELETE",
+            headers: {
+            "Content-Type": "application/json",
+            "authorization": localStorage.getItem("token"),
+            },
+        });
+            if (response.ok) {
+                Swal.fire({
+                icon: "success",
+                title: "Sikeres törlés",
+                text: "A facsemete sikeresen törölve lett!",
+                });
+                deleteTree(id);
+            } else {
+                Swal.fire({
+                icon: "error",
+                title: "Hiba",
+                text: "A facsemete törlése nem sikerült!",
+                });
+            }
+        }
+    };
     return(
         <>
         <Card>

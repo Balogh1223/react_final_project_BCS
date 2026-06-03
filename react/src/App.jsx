@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import TreeForm from './components/TreeForm'
 import TreeList from './components/TreeList'
@@ -10,7 +10,7 @@ import { Routes, Route } from 'react-router-dom'
 
 
 function App() {
-  const [TreeData, sendTreeData] = useState([])
+  const [TreeData, setTreeData] = useState([])
 
   const handleTreeData = (data) => {
     setTreeData((prevData) => [...prevData, data]);
@@ -19,7 +19,7 @@ function App() {
   const getTreeData = async () => {
     try {
 
-      const response = await fetch('https://localhost:3000/products',{
+      const response = await fetch('http://localhost:3000/products',{
       });
       if (response.ok){
         const data = await response.json();
@@ -31,6 +31,13 @@ function App() {
     catch (error){
       console.error('Hiba:', error)
     }
+  }
+  useEffect(() => {
+    getTreeData();
+  }, []);
+
+  const deleteTree = (id) => {
+    getTreelData();
   }
   
 

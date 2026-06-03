@@ -43,10 +43,10 @@ const TreeForm = ({ sendDataToApp }) => {
                     },
                     body: JSON.stringify({
                         name,
-                        img_url,
-                        price,
-                        stock,
                         description,
+                        img_url,
+                        price : Number(price),
+                        stock : Number(stock),             
                     }),
                 });
                 if (response.ok) {
