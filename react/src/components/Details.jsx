@@ -23,7 +23,7 @@ function Details({ trees }) {
 
       <p><strong>Ár:</strong>{tree.price}</p>
       <p><strong>Darab:</strong>{tree.stock}</p>
-      <p><strong>Leírás:</strong>{tree.describtion}</p>
+      <p><strong>Leírás:</strong>{tree.description}</p>
 
       <button onClick={() => navigate(-1)}>
         Vissza

@@ -8,7 +8,7 @@ const TreeForm = ({ sendDataToApp }) => {
     const img_urlRef = useRef();
     const priceRef = useRef();
     const stockRef = useRef();
-    const describtionRef = useRef(); 
+    const descriptionRef = useRef(); 
 
     const handleSubmit = (event) =>{
         event.preventDefault();
@@ -21,9 +21,9 @@ const TreeForm = ({ sendDataToApp }) => {
         const img_url = img_urlRef.current.value;
         const price = priceRef.current.value;
         const stock = stockRef.current.value;
-        const describtion = describtionRef.current.value;
+        const description = descriptionRef.current.value;
 
-        if(!name || !img_url || !price|| !stock || !describtion){
+        if(!name || !img_url || !price|| !stock || !description){
             Swal.fire({
                 icon: "error",
                 title: "Hiba",
@@ -52,6 +52,11 @@ const TreeForm = ({ sendDataToApp }) => {
                 if (response.ok) {
                 const data = await response.json();
                 sendDataToApp(data);
+                Swal.fire({
+                                icon: "success",
+                                title: "Sikeres hozzáadás",
+                                text: "A facsemete sikeresen hozzáadva!",
+                                });
                 } else {
                 Swal.fire({
                     icon: "error",
@@ -86,7 +91,7 @@ const TreeForm = ({ sendDataToApp }) => {
                     <input type="number" id="stock" ref={stockRef}/><br />
 
                     <label htmlFor="describtion">Leírás:</label>
-                    <input type="text" id="describtion" ref={describtionRef}/><br />
+                    <input type="text" id="describtion" ref={descriptionRef}/><br />
 
                     <button type="submit">
                         Küldés
