@@ -1,25 +1,36 @@
 .navbar {
-    position: absolute;
-    left: 0;
-    top: 1rem;
+  position:fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  height: 60px;
+  background: #7d8d78;
+  width: 100%;
+  box-sizing: border-box;
 }
-
-.navbar>a {
-    padding-left: 1rem;
+ 
+.navbar > a {
+  padding: 0 12px;
 }
-
-.link{
-    color:rgb(6, 141, 107);
-    font-size: 1rem;
+ 
+.link {
+  color: #ffeef2;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.15s ease;
 }
-
-.link:hover{
-    color: rgb(0, 73, 55);
+ 
+.link:hover {
+  color: #1a1a1a;
 }
-
-.active, .active:hover{
-    color:rgb(0, 73, 55);
-    font-weight: 600;  
-    font-size: 1.5rem;  
+ 
+.active,
+.active:hover {
+  color: #263045;
+  font-weight: 700;
+  font-size: 16px;
 }
-

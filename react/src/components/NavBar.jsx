@@ -6,7 +6,7 @@ const NavBar = () =>{
     const {isLogged, logout} = useAuth()
 
     return(
-        <nav>
+        <nav className={classes.navbar}>
             <NavLink to='/' className={({isActive}) => isActive ? classes.active : classes.link}>Listanézet</NavLink>
 
             {isLogged && <NavLink to='form' className={({isActive}) =>isActive ? classes.active : classes.link}>Új facsemete</NavLink>}

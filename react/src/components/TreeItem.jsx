@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import Card from "../wrappers/Card";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/loginContext";
+import styles from "./TreeItem.module.css"
 
 
 const TreeItem = ({tree, deleteTree}) => {
@@ -37,13 +38,13 @@ const TreeItem = ({tree, deleteTree}) => {
     return(
         <>
         <Card>
-            <div>
-                <h3>{tree.name}</h3>
+            <div className={styles.container}>
+                <h3 className={styles.product}>{tree.name}</h3>
                 <img src={tree.img_url} alt={tree.name} title={tree.name}/>
             </div>
-            {isLogged && <button onClick={() => handleDelete(tree.id)}>Törlés</button>}
+            {isLogged && <button onClick={() => handleDelete(tree.id)} className={styles.button}>Törlés</button>}
             <NavLink to={`/details/${tree.id}`}>
-                <button>Részletek</button>
+                <button className={styles.button}>Részletek</button>
             </NavLink>
         </Card>
         </>

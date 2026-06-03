@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import Card from "../wrappers/Card";
 import Swal from "sweetalert2"
+import styles from "./TreeForm.module.css"
 
 const TreeForm = ({ sendDataToApp }) => {
 
@@ -75,25 +76,36 @@ const TreeForm = ({ sendDataToApp }) => {
 
     return (
         <Card>
-            <div>
+            <div className={styles.container}>
                 <h2>Új facsemete felvitele</h2>
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor="name">Név:</label>
-                    <input type="text" id="name" ref={nameRef}/><br />
+                <form onSubmit={handleSubmit} className={styles.form}>
 
-                    <label htmlFor="img_url">Kép URL:</label>
-                    <input type="text" id="img_url" ref={img_urlRef}/><br />
+                    <div style={styles.formGroup}>
+                        <label htmlFor="name">Név:</label>
+                        <input type="text" id="name" ref={nameRef}/>
+                    </div>
+                    
+                    <div style={styles.formGroup}>
+                        <label htmlFor="img_url">Kép URL:</label>
+                        <input type="text" id="img_url" ref={img_urlRef}/>
+                    </div>
 
-                    <label htmlFor="price">Ár:</label>
-                    <input type="number" id="price" ref={priceRef}/><br />
+                    <div style={styles.formGroup}>
+                        <label htmlFor="price">Ár:</label>
+                        <input type="number" id="price" ref={priceRef}/>
+                    </div>
 
-                    <label htmlFor="stock">Darabszám:</label>
-                    <input type="number" id="stock" ref={stockRef}/><br />
+                    <div style={styles.formGroup}>
+                        <label htmlFor="stock">Darabszám:</label>
+                        <input type="number" id="stock" ref={stockRef}/>
+                    </div>
+                    
+                    <div style={styles.formGroup}>
+                        <label htmlFor="describtion">Leírás:</label>
+                        <input type="text" id="describtion" ref={descriptionRef}/>
+                    </div>
 
-                    <label htmlFor="describtion">Leírás:</label>
-                    <input type="text" id="describtion" ref={descriptionRef}/><br />
-
-                    <button type="submit">
+                    <button type="submit" className={styles.button}>
                         Küldés
                     </button>
                 </form>

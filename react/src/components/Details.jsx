@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
+import Card from "../wrappers/Card";
 
 function Details({ trees }) {
   const { id } = useParams();
@@ -12,23 +13,25 @@ function Details({ trees }) {
   }
 
   return (
-    <div>
-      <h1>{tree.destination}</h1>
+    <Card>
+        <div>
+        <h1>{tree.destination}</h1>
 
-      <img
-        src={tree.img_url}
-        alt={tree.name}
-        width="500"
-      />
+        <img
+            src={tree.img_url}
+            alt={tree.name}
+            width="500"
+        />
 
-      <p><strong>Ár:</strong>{tree.price}</p>
-      <p><strong>Darab:</strong>{tree.stock}</p>
-      <p><strong>Leírás:</strong>{tree.description}</p>
+        <p><strong>Ár:</strong>{tree.price}</p>
+        <p><strong>Darab:</strong>{tree.stock}</p>
+        <p><strong>Leírás:</strong>{tree.description}</p>
 
-      <button onClick={() => navigate(-1)}>
-        Vissza
-      </button>
-    </div>
+        <button onClick={() => navigate(-1)}>
+            Vissza
+        </button>
+        </div>
+    </Card>
   );
 }
 
