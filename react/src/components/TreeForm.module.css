@@ -43,7 +43,7 @@
   border-radius: 3px;
   font-size: 14px;
   color: #1a1a1a;
-  background: #fafafa;
+  background: #e7e7e7;
   transition: border-color 0.15s ease, background 0.15s ease;
 }
  
@@ -51,7 +51,7 @@
 .textarea:focus {
   outline: none;
   border-color: #1a1a1a;
-  background: #fff;
+  background: #ffffff;
 }
  
 .textarea {

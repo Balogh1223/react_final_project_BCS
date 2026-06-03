@@ -77,30 +77,31 @@ const TreeForm = ({ sendDataToApp }) => {
     return (
         <Card>
             <div className={styles.container}>
+                
                 <h2>Új facsemete felvitele</h2>
                 <form onSubmit={handleSubmit} className={styles.form}>
 
-                    <div style={styles.formGroup}>
+                    <div className={styles.formGroup}>
                         <label htmlFor="name">Név:</label>
                         <input type="text" id="name" ref={nameRef}/>
                     </div>
                     
-                    <div style={styles.formGroup}>
+                    <div className={styles.formGroup}>
                         <label htmlFor="img_url">Kép URL:</label>
                         <input type="text" id="img_url" ref={img_urlRef}/>
                     </div>
 
-                    <div style={styles.formGroup}>
+                    <div className={styles.formGroup}>
                         <label htmlFor="price">Ár:</label>
                         <input type="number" id="price" ref={priceRef}/>
                     </div>
 
-                    <div style={styles.formGroup}>
+                    <div className={styles.formGroup}>
                         <label htmlFor="stock">Darabszám:</label>
                         <input type="number" id="stock" ref={stockRef}/>
                     </div>
                     
-                    <div style={styles.formGroup}>
+                    <div className={styles.formGroup}>
                         <label htmlFor="describtion">Leírás:</label>
                         <input type="text" id="describtion" ref={descriptionRef}/>
                     </div>
@@ -109,8 +110,10 @@ const TreeForm = ({ sendDataToApp }) => {
                         Küldés
                     </button>
                 </form>
+                
             </div>
-        </Card>
+            </Card>
+        
     )
 }
 
