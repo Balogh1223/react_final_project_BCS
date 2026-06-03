@@ -23,7 +23,7 @@ const TreeForm = ({ sendDataToApp }) => {
         const stock = stockRef.current.value;
         const describtion = describtionRef.current.value;
 
-        if(!name || !stock || !describtion){
+        if(!name || !img_url || !price|| !stock || !describtion){
             Swal.fire({
                 icon: "error",
                 title: "Hiba",

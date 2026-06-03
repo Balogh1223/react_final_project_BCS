@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/loginContext";
 
 
-const TreeItem = ({tree}) => {
+const TreeItem = ({tree, deleteTree}) => {
 
     const {isLogged} = useAuth()
     console.log(tree.id)
@@ -14,8 +14,8 @@ const TreeItem = ({tree}) => {
         const response = await fetch(`http://localhost:3000/products/${id}`, {
             method: "DELETE",
             headers: {
-            "Content-Type": "application/json",
-            "authorization": localStorage.getItem("token"),
+                "Content-Type": "application/json",
+                "authorization": localStorage.getItem("token"),
             },
         });
             if (response.ok) {
@@ -40,9 +40,11 @@ const TreeItem = ({tree}) => {
             <div>
                 <h3>{tree.name}</h3>
                 <img src={tree.img_url} alt={tree.name} title={tree.name}/>
-                    
-                <button>Részletek</button>
             </div>
+            {isLogged && <button onClick={() => handleDelete(tree.id)}>Törlés</button>}
+            <NavLink to={`/details/${tree.id}`}>
+                <button>Részletek</button>
+            </NavLink>
         </Card>
         </>
     )

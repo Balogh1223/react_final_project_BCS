@@ -9,9 +9,9 @@ const NavBar = () =>{
         <nav>
             <NavLink to='/' className={({isActive}) => isActive ? classes.active : classes.link}>Listanézet</NavLink>
 
-            {isLogged && <NavLink to='from' className={({isActive}) =>isActive ? classes.active : classes.link}>Új facsemete</NavLink>}
+            {isLogged && <NavLink to='form' className={({isActive}) =>isActive ? classes.active : classes.link}>Új facsemete</NavLink>}
 
-            {!isLogged ? <NavLink to='login' className={({isActive}) =>isActive ? classes.active : classes.link}>Bejelentkezés</NavLink> : <a onClick={logout} className={classes.isActive}>Kijelentkezés</a>}
+            {!isLogged ? <NavLink to='login' className={({isActive}) =>isActive ? classes.active : classes.link}>Bejelentkezés</NavLink> : <a onClick={logout} className={classes.IsActive}>Kijelentkezés</a>}
         </nav>
     )
 } 

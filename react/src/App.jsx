@@ -4,6 +4,7 @@ import TreeForm from './components/TreeForm'
 import TreeList from './components/TreeList'
 import NavBar from './components/NavBar'
 import Login from './components/Login'
+import Details from './components/Details'
 import { AuthProvider } from './context/loginContext'
 import { Routes, Route } from 'react-router-dom'
 
@@ -37,7 +38,7 @@ function App() {
   }, []);
 
   const deleteTree = (id) => {
-    getTreelData();
+    getTreeData();
   }
   
 
@@ -46,9 +47,10 @@ function App() {
       <AuthProvider>
         <NavBar/>
         <Routes>
-          <Route path="/" element={ <TreeList trees={TreeData}></TreeList> }></Route>
+          <Route path="/" element={ <TreeList trees={TreeData} deleteTree={deleteTree}/> }></Route>
           <Route path="form" element={<TreeForm sendDataToApp={handleTreeData} />} />
           <Route path='login' element={<Login/>}/>
+          <Route path='details/:id' element={<Details trees={TreeData}/>}/>
         </Routes>
       </AuthProvider>
     </>
